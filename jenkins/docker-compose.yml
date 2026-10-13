@@ -1,0 +1,18 @@
+# Runs on the JENKINS server.
+services:
+  jenkins:
+    build: .
+    container_name: jenkins
+    restart: unless-stopped
+    user: root            # simplest way to use the host docker socket in a lab; harden later
+    ports:
+      - "8080:8080"       # Jenkins UI
+      - "50000:50000"     # inbound agents (unused for now)
+    volumes:
+      - jenkins_home:/var/jenkins_home
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - JAVA_OPTS=-Xmx1g -Djenkins.install.runSetupWizard=true
+
+volumes:
+  jenkins_home:
