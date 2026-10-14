@@ -14,7 +14,7 @@ pipeline {
     }
 
     environment {
-        DEPLOY_HOST = '172.16.16.XX'            // <-- deployment server IP
+        DEPLOY_HOST = '172.16.17.59'            // <-- deployment server IP
         DEPLOY_USER = 'deploy'
         APP_ROOT    = '/opt/devops-app'
         RELEASE     = "${env.BUILD_NUMBER}"
